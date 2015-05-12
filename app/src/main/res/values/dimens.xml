@@ -1,0 +1,16 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="progress_bar_height">4dp</dimen>
+
+    <dimen name="listitem_divider_height">1px</dimen>
+    <dimen name="listitem_image_width">100dp</dimen>
+
+    <dimen name="grid_view_item_border">1px</dimen>
+    <dimen name="grid_view_margin">-1px</dimen>
+
+    <dimen name="padding_horizontal">5dp</dimen>
+    <dimen name="padding_vertical">5dp</dimen>
+</resources>

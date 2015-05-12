@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="8dp">
+
+    <TextView
+            android:id="@+id/name"
+            style="@style/PokemonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="28sp"
+            tools:text="Pikachu"/>
+
+    <TextView
+            style="@style/PokemonText.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hp"/>
+
+    <TextView
+            android:id="@+id/hp"
+            style="@style/PokemonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="58"/>
+
+    <TextView
+            style="@style/PokemonText.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weight"/>
+
+    <TextView
+            android:id="@+id/weight"
+            style="@style/PokemonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="58"/>
+
+    <TextView
+            style="@style/PokemonText.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/height"/>
+
+    <TextView
+            android:id="@+id/height"
+            style="@style/PokemonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="58"/>
+
+    <TextView
+            style="@style/PokemonText.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/attack"/>
+
+    <TextView
+            android:id="@+id/attack"
+            style="@style/PokemonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="58"/>
+
+    <TextView
+            style="@style/PokemonText.Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/defense"/>
+
+    <TextView
+            android:id="@+id/defense"
+            style="@style/PokemonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="58"/>
+
+</LinearLayout>
