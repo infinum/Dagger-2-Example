@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 22
@@ -46,4 +47,17 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'javax.inject:javax.inject:1'
+
+    compile 'com.google.dagger:dagger:2.0'
+    apt 'com.google.dagger:dagger-compiler:2.0'
+    compile 'org.glassfish:javax.annotation:10.0-b28'
+
+    // instrumentation tests
+    androidTestApt 'com.google.dagger:dagger-compiler:2.0'
+    androidTestCompile('com.squareup.okhttp:mockwebserver:2.3.0') {
+        exclude group: 'com.squareup.okhttp'
+    }
+    androidTestCompile 'org.mockito:mockito-core:1.10.19'
+    androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
 }

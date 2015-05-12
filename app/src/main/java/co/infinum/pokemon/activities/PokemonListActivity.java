@@ -7,14 +7,17 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.infinum.pokemon.R;
 import co.infinum.pokemon.adapters.PokemonAdapter;
+import co.infinum.pokemon.dagger.components.DaggerPokemonListComponent;
+import co.infinum.pokemon.dagger.components.PokemonListComponent;
+import co.infinum.pokemon.dagger.modules.PokemonListModule;
 import co.infinum.pokemon.models.Pokemon;
-import co.infinum.pokemon.mvp.interactors.impl.PokemonListInteractorImpl;
 import co.infinum.pokemon.mvp.presenters.PokemonListPresenter;
-import co.infinum.pokemon.mvp.presenters.impl.PokemonListPresenterImpl;
 import co.infinum.pokemon.mvp.views.PokemonListView;
 
 public class PokemonListActivity extends BaseActivity implements PokemonListView, PokemonAdapter.PokemonClickListener {
@@ -22,6 +25,7 @@ public class PokemonListActivity extends BaseActivity implements PokemonListView
     @InjectView(R.id.recycler_pokemon_list)
     protected RecyclerView pokemonListRecycler;
 
+    @Inject
     protected PokemonListPresenter pokemonListPresenter;
 
     @Override
@@ -33,7 +37,11 @@ public class PokemonListActivity extends BaseActivity implements PokemonListView
         pokemonListRecycler.setHasFixedSize(true);
         pokemonListRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        pokemonListPresenter = new PokemonListPresenterImpl(this, new PokemonListInteractorImpl());
+        PokemonListComponent component = DaggerPokemonListComponent.builder()
+                .pokemonListModule(new PokemonListModule(this))
+                .build();
+        component.inject(this);
+
         pokemonListPresenter.loadPokemonList();
     }
 
@@ -58,7 +66,7 @@ public class PokemonListActivity extends BaseActivity implements PokemonListView
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         pokemonListPresenter.cancel();
+        super.onDestroy();
     }
 }

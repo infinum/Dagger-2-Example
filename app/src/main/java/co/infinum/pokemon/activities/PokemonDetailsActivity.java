@@ -3,20 +3,21 @@ package co.infinum.pokemon.activities;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.infinum.pokemon.R;
+import co.infinum.pokemon.dagger.components.DaggerPokemonDetailsComponent;
+import co.infinum.pokemon.dagger.components.PokemonDetailsComponent;
+import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 import co.infinum.pokemon.models.Pokemon;
-import co.infinum.pokemon.mvp.interactors.impl.PokemonDetailsInteractorImpl;
 import co.infinum.pokemon.mvp.presenters.PokemonDetailsPresenter;
-import co.infinum.pokemon.mvp.presenters.impl.PokemonDetailsPresenterImpl;
 import co.infinum.pokemon.mvp.views.PokemonDetailsView;
 
 public class PokemonDetailsActivity extends BaseActivity implements PokemonDetailsView {
 
     public static final String EXTRA_POKEMON = "pokemon";
-
-    protected PokemonDetailsPresenter pokemonDetailsPresenter;
 
     @InjectView(R.id.name)
     protected TextView nameText;
@@ -36,6 +37,9 @@ public class PokemonDetailsActivity extends BaseActivity implements PokemonDetai
     @InjectView(R.id.defense)
     protected TextView defenseText;
 
+    @Inject
+    protected PokemonDetailsPresenter pokemonDetailsPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +47,11 @@ public class PokemonDetailsActivity extends BaseActivity implements PokemonDetai
         ButterKnife.inject(this);
 
         Pokemon pokemon = (Pokemon) getIntent().getSerializableExtra(EXTRA_POKEMON);
-        pokemonDetailsPresenter = new PokemonDetailsPresenterImpl(this, new PokemonDetailsInteractorImpl());
+        PokemonDetailsComponent component = DaggerPokemonDetailsComponent.builder()
+                .pokemonDetailsModule(new PokemonDetailsModule(this))
+                .build();
+        component.inject(this);
+
         pokemonDetailsPresenter.loadDetails(pokemon);
     }
 
@@ -59,7 +67,7 @@ public class PokemonDetailsActivity extends BaseActivity implements PokemonDetai
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         pokemonDetailsPresenter.cancel();
+        super.onDestroy();
     }
 }

@@ -44,13 +44,7 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
         } else {
             builder.setMessage("");
         }
-        DialogInterface.OnClickListener onOkClick = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        };
-        builder.setPositiveButton(android.R.string.ok, onOkClick);
+        builder.setPositiveButton(android.R.string.ok, null);
 
         if (!isFinishing()) {
             builder.show();

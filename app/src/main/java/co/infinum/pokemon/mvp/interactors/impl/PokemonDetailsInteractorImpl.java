@@ -1,9 +1,11 @@
 package co.infinum.pokemon.mvp.interactors.impl;
 
+import javax.inject.Inject;
+
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.interactors.PokemonDetailsInteractor;
 import co.infinum.pokemon.mvp.listeners.PokemonDetailsListener;
-import co.infinum.pokemon.network.ApiManager;
+import co.infinum.pokemon.network.PokemonService;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -17,11 +19,18 @@ public class PokemonDetailsInteractorImpl implements PokemonDetailsInteractor, C
 
     private boolean isCanceled;
 
+    private PokemonService pokemonService;
+
+    @Inject
+    public PokemonDetailsInteractorImpl(PokemonService pokemonService) {
+        this.pokemonService = pokemonService;
+    }
+
     @Override
     public void loadPokemonDetails(String resourceUri, PokemonDetailsListener pokemonDetailsListener) {
         reset();
         this.pokemonDetailsListener = pokemonDetailsListener;
-        ApiManager.getPokemonService().getPokemon(resourceUri, this);
+        pokemonService.getPokemon(resourceUri, this);
     }
 
     @Override
