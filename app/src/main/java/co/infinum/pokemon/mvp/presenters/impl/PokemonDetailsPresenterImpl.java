@@ -37,8 +37,20 @@ public class PokemonDetailsPresenterImpl implements PokemonDetailsPresenter, Pok
 
     @Override
     public void onSuccess(Pokemon pokemon) {
-        pokemonDetailsView.hideProgress();
-        pokemonDetailsView.showDetails(pokemon);
+        // APIs are not to be trusted so we wrap interaction with data from API in try/catch
+        try {
+            pokemonDetailsView.showName(pokemon.getName());
+            pokemonDetailsView.showHp(String.valueOf(pokemon.getHp()));
+            pokemonDetailsView.showWeight(pokemon.getWeight());
+            pokemonDetailsView.showHeight(pokemon.getHeight());
+            pokemonDetailsView.showAttack(String.valueOf(pokemon.getAttack()));
+            pokemonDetailsView.showDefense(String.valueOf(pokemon.getDefense()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            pokemonDetailsView.showError("Unknown error while using data from API!");
+        } finally {
+            pokemonDetailsView.hideProgress();
+        }
     }
 
     @Override

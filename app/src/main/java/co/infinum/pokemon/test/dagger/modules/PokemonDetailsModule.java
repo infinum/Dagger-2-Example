@@ -1,4 +1,4 @@
-package co.infinum.pokemon.dagger.modules;
+package co.infinum.pokemon.test.dagger.modules;
 
 import co.infinum.pokemon.mvp.interactors.PokemonDetailsInteractor;
 import co.infinum.pokemon.mvp.interactors.impl.PokemonDetailsInteractorImpl;

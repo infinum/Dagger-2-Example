@@ -1,8 +1,8 @@
-package co.infinum.pokemon.dagger.components;
+package co.infinum.pokemon.test.dagger.components;
 
 import co.infinum.pokemon.activities.PokemonDetailsActivity;
-import co.infinum.pokemon.dagger.modules.NetworkModule;
-import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
+import co.infinum.pokemon.test.dagger.modules.NetworkModule;
+import co.infinum.pokemon.test.dagger.modules.PokemonDetailsModule;
 import dagger.Component;
 
 /**

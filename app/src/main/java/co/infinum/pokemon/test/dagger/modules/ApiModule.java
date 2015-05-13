@@ -1,4 +1,6 @@
-package co.infinum.pokemon.dagger.modules;
+package co.infinum.pokemon.test.dagger.modules;
+
+import android.util.Log;
 
 import co.infinum.pokemon.network.PokemonService;
 import dagger.Module;
@@ -19,6 +21,13 @@ public class ApiModule {
         if (pokemonService == null) {
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setEndpoint(endpoint)
+                    .setLog(new RestAdapter.Log() {
+                        @Override
+                        public void log(String message) {
+                            Log.d("REST-ADAPTER", message);
+                        }
+                    })
+                    .setLogLevel(RestAdapter.LogLevel.FULL)
                     .build();
             pokemonService = restAdapter.create(PokemonService.class);
         }

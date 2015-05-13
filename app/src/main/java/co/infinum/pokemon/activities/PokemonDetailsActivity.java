@@ -8,12 +8,12 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.infinum.pokemon.R;
-import co.infinum.pokemon.dagger.components.DaggerPokemonDetailsComponent;
-import co.infinum.pokemon.dagger.components.PokemonDetailsComponent;
-import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.presenters.PokemonDetailsPresenter;
 import co.infinum.pokemon.mvp.views.PokemonDetailsView;
+import co.infinum.pokemon.test.dagger.components.DaggerPokemonDetailsComponent;
+import co.infinum.pokemon.test.dagger.components.PokemonDetailsComponent;
+import co.infinum.pokemon.test.dagger.modules.PokemonDetailsModule;
 
 public class PokemonDetailsActivity extends BaseActivity implements PokemonDetailsView {
 
@@ -56,18 +56,38 @@ public class PokemonDetailsActivity extends BaseActivity implements PokemonDetai
     }
 
     @Override
-    public void showDetails(Pokemon pokemon) {
-        nameText.setText(pokemon.getName());
-        hpText.setText(String.valueOf(pokemon.getHp()));
-        heightText.setText(pokemon.getHeight());
-        weightText.setText(pokemon.getWeight());
-        attackText.setText(String.valueOf(pokemon.getAttack()));
-        defenseText.setText(String.valueOf(pokemon.getDefense()));
-    }
-
-    @Override
     protected void onDestroy() {
         pokemonDetailsPresenter.cancel();
         super.onDestroy();
+    }
+
+    @Override
+    public void showName(String name) {
+        nameText.setText(name);
+    }
+
+    @Override
+    public void showHp(String hp) {
+        hpText.setText(hp);
+    }
+
+    @Override
+    public void showWeight(String weight) {
+        weightText.setText(weight);
+    }
+
+    @Override
+    public void showHeight(String height) {
+        heightText.setText(height);
+    }
+
+    @Override
+    public void showAttack(String attack) {
+        attackText.setText(attack);
+    }
+
+    @Override
+    public void showDefense(String defense) {
+        defenseText.setText(defense);
     }
 }
