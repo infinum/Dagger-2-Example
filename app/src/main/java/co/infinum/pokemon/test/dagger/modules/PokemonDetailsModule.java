@@ -26,8 +26,8 @@ public class PokemonDetailsModule {
     }
 
     @Provides
-    public PokemonDetailsInteractor provideInteractor(PokemonDetailsInteractorImpl interactor) {
-        return interactor;
+    public PokemonDetailsInteractor provideInteractor() {
+        return new PokemonDetailsInteractorImpl();
     }
 
     @Provides
