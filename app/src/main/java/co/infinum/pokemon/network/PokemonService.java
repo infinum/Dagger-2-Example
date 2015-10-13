@@ -15,5 +15,5 @@ public interface PokemonService {
     void getPokedex(Callback<Pokedex> callback);
 
     @GET("/{resource_uri}")
-    void getPokemon(@Path("resource_uri") String resourceUri, Callback<Pokemon> callback);
+    void getPokemon(@Path(value = "resource_uri", encode = false) String resourceUri, Callback<Pokemon> callback);
 }
