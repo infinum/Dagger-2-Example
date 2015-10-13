@@ -26,8 +26,8 @@ public class PokemonListModule {
     }
 
     @Provides
-    public PokemonListInteractor provideInteractor(PokemonListInteractorImpl interactor) {
-        return interactor;
+    public PokemonListInteractor provideInteractor() {
+        return new PokemonListInteractorImpl();
     }
 
     @Provides

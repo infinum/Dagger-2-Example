@@ -1,11 +1,9 @@
 package co.infinum.pokemon.mvp.interactors.impl;
 
-import javax.inject.Inject;
-
+import co.infinum.pokemon.core.Core;
 import co.infinum.pokemon.models.Pokedex;
 import co.infinum.pokemon.mvp.interactors.PokemonListInteractor;
 import co.infinum.pokemon.mvp.listeners.PokemonListListener;
-import co.infinum.pokemon.network.PokemonService;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -19,18 +17,11 @@ public class PokemonListInteractorImpl implements PokemonListInteractor, Callbac
 
     private boolean isCanceled;
 
-    private PokemonService pokemonService;
-
-    @Inject
-    public PokemonListInteractorImpl(PokemonService pokemonService) {
-        this.pokemonService = pokemonService;
-    }
-
     @Override
     public void loadPokemonList(PokemonListListener pokemonListListener) {
         reset();
         this.pokemonListListener = pokemonListListener;
-        pokemonService.getPokedex(this);
+        Core.getCore().getPokemonService().getPokedex(this);
     }
 
     @Override
