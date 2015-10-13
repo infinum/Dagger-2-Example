@@ -4,8 +4,6 @@ import javax.inject.Inject;
 
 import co.infinum.pokemon.network.PokemonService;
 import co.infinum.pokemon.test.dagger.components.DaggerCoreComponent;
-import co.infinum.pokemon.test.dagger.modules.ApiModule;
-import co.infinum.pokemon.test.dagger.modules.HostModule;
 import co.infinum.pokemon.test.dagger.modules.NetworkModule;
 
 /**
