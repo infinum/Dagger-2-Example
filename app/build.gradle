@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 23
+        minSdkVersion 16
+        targetSdkVersion 22
         applicationId 'co.infinum.pokemon'
         versionCode 1
         versionName "1.0"
@@ -28,6 +28,9 @@ android {
         }
     }
 
+    def STRING = 'String'
+    def API_URL = 'API_URL'
+
     buildTypes {
         release {
             minifyEnabled true
@@ -35,17 +38,32 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    flavorDimensions 'api'
+
+    // two flavors to make the example more realistic
+    productFlavors {
+        staging {
+            dimension 'api'
+            applicationId 'co.infinum.pokemon.staging'
+            buildConfigField STRING, API_URL, '"http://pokeapi.co"'
+        }
+        production {
+            dimension 'api'
+            buildConfigField STRING, API_URL, '"http://pokeapi.co"'
+        }
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:recyclerview-v7:23.0.1'
-    compile 'com.android.support:cardview-v7:23.0.1'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'com.android.support:cardview-v7:22.2.1'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.squareup.picasso:picasso:2.5.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'javax.inject:javax.inject:1'
 
@@ -53,16 +71,17 @@ dependencies {
     apt 'com.google.dagger:dagger-compiler:2.0'
     compile 'org.glassfish:javax.annotation:10.0-b28'
 
-    testCompile "org.robolectric:robolectric:3.0"
-
+    testCompile 'org.robolectric:robolectric:3.0'
+    testCompile 'org.robolectric:shadows-support-v4:3.0'
 
     // unit tests
-    testCompile 'com.google.dagger:dagger-compiler:2.0' // don't care if it's not apt in tests
+    testApt 'com.google.dagger:dagger-compiler:2.0'
     testCompile 'junit:junit:4.12'
+    testCompile 'com.squareup.assertj:assertj-android:1.1.0'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
     testCompile 'org.apache.maven:maven-ant-tasks:2.1.3' // fixes issue on linux/mac
     testCompile('org.robolectric:robolectric:3.0')
-    testCompile 'com.squareup.okhttp:mockwebserver:2.4.0'
+    testCompile 'com.squareup.okhttp:mockwebserver:2.5.0'
 
     // instrumentation tests
     androidTestApt 'com.google.dagger:dagger-compiler:2.0'
@@ -71,12 +90,10 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.4.1'
     androidTestCompile 'com.android.support.test:rules:0.4.1'
 
-    androidTestCompile('com.squareup.okhttp:mockwebserver:2.3.0') {
+    androidTestCompile('com.squareup.okhttp:mockwebserver:2.5.0') {
         exclude group: 'com.squareup.okhttp'
     }
     androidTestCompile 'org.mockito:mockito-core:1.10.19'
     androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
     androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
-
-
 }

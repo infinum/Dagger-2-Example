@@ -1,7 +1,7 @@
-package co.infinum.pokemon.test.dagger.components;
+package dagger.components;
 
-import co.infinum.pokemon.test.dagger.modules.MockNetworkModule;
-import co.infinum.pokemon.test.dagger.modules.PokemonDetailsModule;
+import dagger.modules.MockNetworkModule;
+import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 import co.infinum.pokemon.mvp.presenters.PokemonDetailsPresenter;
 import dagger.Component;
 

@@ -1,4 +1,4 @@
-package co.infinum.pokemon.test.dagger.modules;
+package dagger.modules;
 
 import com.squareup.okhttp.mockwebserver.MockWebServer;
 

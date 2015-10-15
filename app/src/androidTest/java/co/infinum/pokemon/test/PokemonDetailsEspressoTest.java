@@ -10,8 +10,8 @@ import android.test.suitebuilder.annotation.LargeTest;
 
 import co.infinum.pokemon.activities.PokemonDetailsActivity;
 import co.infinum.pokemon.core.Core;
-import co.infinum.pokemon.test.dagger.components.DaggerCoreComponent;
-import co.infinum.pokemon.test.dagger.modules.NetworkModule;
+import dagger.components.DaggerCoreComponent;
+import co.infinum.pokemon.dagger.modules.NetworkModule;
 
 /**
  * Test for {@link PokemonDetailsActivity}.

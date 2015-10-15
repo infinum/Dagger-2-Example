@@ -11,9 +11,9 @@ import co.infinum.pokemon.R;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.presenters.PokemonDetailsPresenter;
 import co.infinum.pokemon.mvp.views.PokemonDetailsView;
-import co.infinum.pokemon.test.dagger.components.DaggerPokemonDetailsComponent;
-import co.infinum.pokemon.test.dagger.components.PokemonDetailsComponent;
-import co.infinum.pokemon.test.dagger.modules.PokemonDetailsModule;
+import dagger.components.DaggerPokemonDetailsComponent;
+import co.infinum.pokemon.dagger.components.PokemonDetailsComponent;
+import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 
 public class PokemonDetailsActivity extends BaseActivity implements PokemonDetailsView {
 

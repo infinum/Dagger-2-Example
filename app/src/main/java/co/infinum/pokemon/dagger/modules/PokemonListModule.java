@@ -1,4 +1,4 @@
-package co.infinum.pokemon.test.dagger.modules;
+package co.infinum.pokemon.dagger.modules;
 
 import co.infinum.pokemon.mvp.interactors.PokemonListInteractor;
 import co.infinum.pokemon.mvp.interactors.impl.PokemonListInteractorImpl;
@@ -26,8 +26,8 @@ public class PokemonListModule {
     }
 
     @Provides
-    public PokemonListInteractor provideInteractor() {
-        return new PokemonListInteractorImpl();
+    public PokemonListInteractor provideInteractor(PokemonListInteractorImpl interactor) {
+        return interactor;
     }
 
     @Provides

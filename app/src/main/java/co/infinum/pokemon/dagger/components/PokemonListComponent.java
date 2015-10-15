@@ -1,9 +1,9 @@
-package co.infinum.pokemon.test.dagger.components;
+package co.infinum.pokemon.dagger.components;
 
 import co.infinum.pokemon.activities.PokemonListActivity;
-import co.infinum.pokemon.test.dagger.modules.NetworkModule;
-import co.infinum.pokemon.test.dagger.modules.PokemonListModule;
+import co.infinum.pokemon.dagger.modules.NetworkModule;
 import dagger.Component;
+import co.infinum.pokemon.dagger.modules.PokemonListModule;
 
 /**
  * Created by dino on 12/05/15.
