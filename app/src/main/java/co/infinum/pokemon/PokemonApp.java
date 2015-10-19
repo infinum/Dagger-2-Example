@@ -4,8 +4,8 @@ import android.app.Application;
 
 import javax.inject.Inject;
 
+import co.infinum.pokemon.dagger.components.DaggerAppComponent;
 import co.infinum.pokemon.network.PokemonService;
-import dagger.components.DaggerAppComponent;
 
 public class PokemonApp extends Application {
 

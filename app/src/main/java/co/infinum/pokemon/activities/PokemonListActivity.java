@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.infinum.pokemon.R;
 import co.infinum.pokemon.adapters.PokemonAdapter;
-import dagger.components.DaggerPokemonListComponent;
+import co.infinum.pokemon.dagger.components.DaggerPokemonListComponent;
 import co.infinum.pokemon.dagger.components.PokemonListComponent;
 import co.infinum.pokemon.dagger.modules.PokemonListModule;
 import co.infinum.pokemon.models.Pokemon;
