@@ -8,10 +8,9 @@ import org.junit.Test;
 import android.support.test.rule.ActivityTestRule;
 import android.test.suitebuilder.annotation.LargeTest;
 
+import co.infinum.pokemon.PokemonApp;
 import co.infinum.pokemon.activities.PokemonDetailsActivity;
-import co.infinum.pokemon.core.Core;
-import dagger.components.DaggerCoreComponent;
-import co.infinum.pokemon.dagger.modules.NetworkModule;
+import co.infinum.pokemon.dagger.components.DaggerAppComponent;
 
 /**
  * Test for {@link PokemonDetailsActivity}.
@@ -28,13 +27,11 @@ public class PokemonDetailsEspressoTest {
 
     @Before
     public void setUp() throws Exception {
-        //TODO Reinject the core with mock networking module.
-        Core.inject(
-                DaggerCoreComponent.builder()
-                        .networkModule(new NetworkModule())
-                        .build()
-                        .inject()
-        );
+        //TODO Reinject the app with mock networking module.
+        DaggerAppComponent.builder()
+                .build()
+                .inject(PokemonApp.getInstance());
+
     }
 
     @After

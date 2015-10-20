@@ -4,8 +4,8 @@ import android.app.Application;
 
 import javax.inject.Inject;
 
+import co.infinum.pokemon.dagger.components.DaggerAppComponent;
 import co.infinum.pokemon.network.PokemonService;
-import dagger.components.DaggerAppComponent;
 
 public class PokemonApp extends Application {
 
@@ -28,6 +28,10 @@ public class PokemonApp extends Application {
 
     public static PokemonApp getInstance() {
         return instance;
+    }
+
+    public void injectPokemonService(PokemonService pokemonService) {
+        this.pokemonService = pokemonService;
     }
 
     public PokemonService getPokemonService() {

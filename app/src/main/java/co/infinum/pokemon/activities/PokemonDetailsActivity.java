@@ -8,12 +8,12 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.infinum.pokemon.R;
+import co.infinum.pokemon.dagger.components.DaggerPokemonDetailsComponent;
+import co.infinum.pokemon.dagger.components.PokemonDetailsComponent;
+import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.presenters.PokemonDetailsPresenter;
 import co.infinum.pokemon.mvp.views.PokemonDetailsView;
-import dagger.components.DaggerPokemonDetailsComponent;
-import co.infinum.pokemon.dagger.components.PokemonDetailsComponent;
-import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 
 public class PokemonDetailsActivity extends BaseActivity implements PokemonDetailsView {
 

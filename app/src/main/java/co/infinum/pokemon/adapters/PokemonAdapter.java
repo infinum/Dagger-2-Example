@@ -77,6 +77,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
             rootView = itemView;
+
             ButterKnife.inject(this, itemView);
         }
     }

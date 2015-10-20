@@ -7,6 +7,7 @@ import com.squareup.okhttp.mockwebserver.MockWebServer;
 import com.squareup.okhttp.mockwebserver.RecordedRequest;
 
 import org.junit.Before;
+import org.robolectric.shadows.ShadowLog;
 
 import java.net.HttpURLConnection;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +25,8 @@ public class BaseTest {
     @Before
     public void setup() throws Exception {
         mockWebServer = PokemonTestApp.getMockWebServer();
+
+        ShadowLog.stream = System.out;
     }
 
     protected Gson getGson() {
