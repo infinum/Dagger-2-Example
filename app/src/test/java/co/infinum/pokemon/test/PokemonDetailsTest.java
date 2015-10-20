@@ -13,7 +13,6 @@ import org.robolectric.annotation.Config;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
 import android.widget.TextView;
 
 import co.infinum.pokemon.PokemonTestApp;
@@ -24,7 +23,8 @@ import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.shadows.ShadowGson;
 import co.infinum.pokemon.utils.ResourceUtils;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.android.api.Assertions.assertThat;
+
 
 /**
  * Created by ivan on 12/10/15.
@@ -74,9 +74,7 @@ public class PokemonDetailsTest extends BaseTest {
         RecordedRequest request = takeLastRequest();
 
         //Check that name in details is displayed properly.
-        assertThat(activity.findViewById(R.id.name).getVisibility())
-                .isEqualTo(View.VISIBLE);
-        assertThat(((TextView) activity.findViewById(R.id.name))
-                .getText()).isEqualTo("Charizard");
+        assertThat(activity.findViewById(R.id.name)).isVisible();
+        assertThat((TextView) activity.findViewById(R.id.name)).hasText("Charizard");
     }
 }
