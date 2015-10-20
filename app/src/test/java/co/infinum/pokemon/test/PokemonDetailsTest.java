@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import co.infinum.pokemon.R;
 import co.infinum.pokemon.activities.PokemonDetailsActivity;
 import co.infinum.pokemon.helpers.CustomRobolectricGradleTestRunner;
 import co.infinum.pokemon.models.Pokemon;
+import co.infinum.pokemon.shadows.ShadowGson;
 import co.infinum.pokemon.utils.ResourceUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,6 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Created by ivan on 12/10/15.
  */
 @RunWith(CustomRobolectricGradleTestRunner.class)
+@Config(shadows = {ShadowGson.class})
 public class PokemonDetailsTest extends BaseTest {
 
     private PokemonDetailsActivity buildActivity(Pokemon pokemon) {
@@ -71,7 +74,9 @@ public class PokemonDetailsTest extends BaseTest {
         RecordedRequest request = takeLastRequest();
 
         //Check that name in details is displayed properly.
-        assertThat(activity.findViewById(R.id.name).getVisibility()).isEqualTo(View.VISIBLE);
-        assertThat(((TextView) activity.findViewById(R.id.name)).getText()).isEqualTo("Charizard");
+        assertThat(activity.findViewById(R.id.name).getVisibility())
+                .isEqualTo(View.VISIBLE);
+        assertThat(((TextView) activity.findViewById(R.id.name))
+                .getText()).isEqualTo("Charizard");
     }
 }
