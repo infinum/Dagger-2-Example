@@ -30,6 +30,10 @@ public class PokemonApp extends Application {
         return instance;
     }
 
+    public void injectPokemonService(PokemonService pokemonService) {
+        this.pokemonService = pokemonService;
+    }
+
     public PokemonService getPokemonService() {
         return pokemonService;
     }
