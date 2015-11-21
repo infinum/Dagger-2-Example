@@ -1,5 +1,10 @@
 package co.infinum.pokemon.mvp.presenters.impl;
 
+import com.raizlabs.android.dbflow.runtime.TransactionManager;
+import com.raizlabs.android.dbflow.runtime.transaction.process.ProcessModelInfo;
+import com.raizlabs.android.dbflow.runtime.transaction.process.SaveModelTransaction;
+import com.raizlabs.android.dbflow.sql.language.Delete;
+
 import javax.inject.Inject;
 
 import co.infinum.pokemon.models.Pokedex;
@@ -42,7 +47,17 @@ public class PokemonListPresenterImpl implements PokemonListPresenter, PokemonLi
     }
 
     @Override
-    public void onSuccess(Pokedex pokedex) {
+    public void onSuccess(Pokedex pokedex, Source source) {
+
+        if (source.equals(Source.WEB)) {
+
+            //Since no user generated content is saved in Pokemon database (favorites etc.) the whole table can be deleted
+            Delete.table(Pokemon.class);
+            TransactionManager.getInstance().addTransaction(new SaveModelTransaction<>(ProcessModelInfo.withModels(pokedex.getPokemons())));
+
+        }
+
+
         pokemonListView.hideProgress();
         pokemonListView.showPokemons(pokedex.getPokemons());
     }

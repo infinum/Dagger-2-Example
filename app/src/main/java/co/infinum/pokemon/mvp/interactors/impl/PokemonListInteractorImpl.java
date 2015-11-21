@@ -15,6 +15,8 @@ import retrofit.client.Response;
  */
 public class PokemonListInteractorImpl implements PokemonListInteractor, Callback<Pokedex> {
 
+    private final PokemonListListener.Source SOURCE = PokemonListListener.Source.WEB;
+
     private PokemonListListener pokemonListListener;
 
     private boolean isCanceled;
@@ -46,7 +48,7 @@ public class PokemonListInteractorImpl implements PokemonListInteractor, Callbac
     @Override
     public void success(Pokedex pokedex, Response response) {
         if (!isCanceled) {
-            pokemonListListener.onSuccess(pokedex);
+            pokemonListListener.onSuccess(pokedex, SOURCE);
         }
     }
 

@@ -4,15 +4,19 @@ import com.google.gson.annotations.SerializedName;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import android.text.TextUtils;
 
 import java.io.Serializable;
 
+import co.infinum.pokemon.database.PokemonDatabase;
+
 /**
  * Created by dino on 20/03/15.
  */
+@Table(databaseName = PokemonDatabase.NAME)
 public class Pokemon extends BaseModel implements Serializable {
 
     public static final String NAME = "name";
@@ -30,8 +34,8 @@ public class Pokemon extends BaseModel implements Serializable {
     public static final String WEIGHT = "weight";
 
     @Column
-    @PrimaryKey
-    private long id;
+    @PrimaryKey(autoincrement = true)
+    private long databaseId;
 
     @Column
     @SerializedName(NAME)
@@ -69,6 +73,14 @@ public class Pokemon extends BaseModel implements Serializable {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    public void setDatabaseId(long databaseId) {
+        this.databaseId = databaseId;
+    }
+
+    public long getDatabaseId() {
+        return databaseId;
     }
 
     public String getName() {

@@ -7,5 +7,12 @@ import co.infinum.pokemon.models.Pokedex;
  */
 public interface PokemonListListener extends BaseListener {
 
-    void onSuccess(Pokedex pokedex);
+    /**
+     * Used to define from where pokemon list was fetched
+     */
+    enum Source {
+        WEB, DATABASE
+    }
+
+    void onSuccess(Pokedex pokedex, Source source);
 }

@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Pokemon</string>
+    <string name="dbinspector_app_name">Pokemon db</string>
     <string name="error_network_problem" formatted="false">There was a network problem.</string>
     <string name="error_login_failed" formatted="false">Login failed.</string>
     <string name="error_unknown_problem" formatted="false">Unknown error occurred</string>
