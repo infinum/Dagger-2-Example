@@ -2,39 +2,32 @@ package co.infinum.pokemon;
 
 import android.app.Application;
 
-import javax.inject.Inject;
-
+import co.infinum.pokemon.dagger.components.AppComponent;
 import co.infinum.pokemon.dagger.components.DaggerAppComponent;
-import co.infinum.pokemon.network.PokemonService;
 
 public class PokemonApp extends Application {
 
     private static PokemonApp instance;
 
-    @Inject
-    protected PokemonService pokemonService;
+    private AppComponent applicationComponent;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        setInstance(this);
-
-        DaggerAppComponent.create().inject(this);
+    public static PokemonApp getInstance() {
+        return instance;
     }
 
     public static void setInstance(PokemonApp instance) {
         PokemonApp.instance = instance;
     }
 
-    public static PokemonApp getInstance() {
-        return instance;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        setInstance(this);
+
+        applicationComponent = DaggerAppComponent.create();
     }
 
-    public void injectPokemonService(PokemonService pokemonService) {
-        this.pokemonService = pokemonService;
-    }
-
-    public PokemonService getPokemonService() {
-        return pokemonService;
+    public AppComponent getApplicationComponent() {
+        return applicationComponent;
     }
 }

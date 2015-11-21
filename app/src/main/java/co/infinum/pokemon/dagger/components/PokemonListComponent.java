@@ -1,15 +1,15 @@
 package co.infinum.pokemon.dagger.components;
 
 import co.infinum.pokemon.activities.PokemonListActivity;
-import co.infinum.pokemon.dagger.modules.NetworkModule;
-import dagger.Component;
 import co.infinum.pokemon.dagger.modules.PokemonListModule;
+import co.infinum.pokemon.dagger.scopes.ActivityScope;
+import dagger.Subcomponent;
 
 /**
  * Created by dino on 12/05/15.
  */
-@Component(modules = {
-        NetworkModule.class,
+@ActivityScope
+@Subcomponent(modules = {
         PokemonListModule.class
 })
 public interface PokemonListComponent {
