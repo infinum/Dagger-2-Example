@@ -1,5 +1,7 @@
 package co.infinum.pokemon;
 
+import com.raizlabs.android.dbflow.config.FlowManager;
+
 import android.app.Application;
 
 import javax.inject.Inject;
@@ -18,7 +20,7 @@ public class PokemonApp extends Application {
     public void onCreate() {
         super.onCreate();
         setInstance(this);
-
+        FlowManager.init(this);
         DaggerAppComponent.create().inject(this);
     }
 

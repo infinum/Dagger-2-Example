@@ -2,6 +2,10 @@ package co.infinum.pokemon.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 import android.text.TextUtils;
 
 import java.io.Serializable;
@@ -9,7 +13,7 @@ import java.io.Serializable;
 /**
  * Created by dino on 20/03/15.
  */
-public class Pokemon implements Serializable {
+public class Pokemon extends BaseModel implements Serializable {
 
     public static final String NAME = "name";
 
@@ -25,24 +29,35 @@ public class Pokemon implements Serializable {
 
     public static final String WEIGHT = "weight";
 
+    @Column
+    @PrimaryKey
+    private long id;
+
+    @Column
     @SerializedName(NAME)
     private String name;
 
+    @Column
     @SerializedName(RESOURCE_URI)
     private String resourceUri;
 
+    @Column
     @SerializedName(HP)
     private int hp;
 
+    @Column
     @SerializedName(ATTACK)
     private int attack;
 
+    @Column
     @SerializedName(DEFENSE)
     private int defense;
 
+    @Column
     @SerializedName(HEIGHT)
     private String height;
 
+    @Column
     @SerializedName(WEIGHT)
     private String weight;
 
