@@ -13,13 +13,11 @@ import retrofit.client.Response;
 /**
  * Created by dino on 21/03/15.
  */
-public class PokemonListInteractorImpl implements PokemonListInteractor, Callback<Pokedex> {
+public class PokemonListInteractorImpl extends RetrofitInteractor implements PokemonListInteractor, Callback<Pokedex> {
 
     private final PokemonListListener.Source SOURCE = PokemonListListener.Source.WEB;
 
     private PokemonListListener pokemonListListener;
-
-    private boolean isCanceled;
 
     private PokemonService pokemonService;
 
@@ -33,16 +31,6 @@ public class PokemonListInteractorImpl implements PokemonListInteractor, Callbac
         reset();
         this.pokemonListListener = pokemonListListener;
         pokemonService.getPokedex(this);
-    }
-
-    @Override
-    public void cancel() {
-        isCanceled = true;
-    }
-
-    @Override
-    public void reset() {
-        isCanceled = false;
     }
 
     @Override

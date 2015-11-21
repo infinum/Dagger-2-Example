@@ -9,7 +9,7 @@ import co.infinum.pokemon.models.Pokemon;
  */
 public interface PokemonListView extends BaseView {
 
-    void showPokemons(List<Pokemon> pokemons);
+    void showPokemons(List<Pokemon> pokemons, String fetchedFrom);
 
     void showPokemonDetails(Pokemon pokemon);
 }

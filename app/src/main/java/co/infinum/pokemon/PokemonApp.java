@@ -1,6 +1,8 @@
 package co.infinum.pokemon;
 
 import com.raizlabs.android.dbflow.config.FlowManager;
+import com.zplesac.connectifty.Connectify;
+import com.zplesac.connectifty.ConnectifyConfiguration;
 
 import android.app.Application;
 
@@ -16,20 +18,25 @@ public class PokemonApp extends Application {
     @Inject
     protected PokemonService pokemonService;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        setInstance(this);
-        FlowManager.init(this);
-        DaggerAppComponent.create().inject(this);
+    public static PokemonApp getInstance() {
+        return instance;
     }
 
     public static void setInstance(PokemonApp instance) {
         PokemonApp.instance = instance;
     }
 
-    public static PokemonApp getInstance() {
-        return instance;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        setInstance(this);
+
+        FlowManager.init(this);
+
+        DaggerAppComponent.create().inject(this);
+
+        ConnectifyConfiguration connectifyConfiguration = new ConnectifyConfiguration.Builder(this).build();
+        Connectify.getInstance().init(connectifyConfiguration);
     }
 
     public void injectPokemonService(PokemonService pokemonService) {

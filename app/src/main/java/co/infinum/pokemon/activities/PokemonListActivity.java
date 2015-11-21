@@ -1,7 +1,10 @@
 package co.infinum.pokemon.activities;
 
+import com.zplesac.connectifty.Connectify;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -22,6 +25,8 @@ import co.infinum.pokemon.mvp.views.PokemonListView;
 
 public class PokemonListActivity extends BaseActivity implements PokemonListView, PokemonAdapter.PokemonClickListener {
 
+    private static final int SNACKBAR_DURATION = 2000;
+
     @InjectView(R.id.recycler_pokemon_list)
     protected RecyclerView pokemonListRecycler;
 
@@ -34,22 +39,35 @@ public class PokemonListActivity extends BaseActivity implements PokemonListView
         setContentView(R.layout.activity_pokemon_list);
         ButterKnife.inject(this);
 
-        pokemonListRecycler.setHasFixedSize(true);
-        pokemonListRecycler.setLayoutManager(new LinearLayoutManager(this));
+        initUI();
 
-        PokemonListComponent component = DaggerPokemonListComponent.builder()
-                .pokemonListModule(new PokemonListModule(this))
-                .build();
-        component.inject(this);
+        injectDependencies();
 
         pokemonListPresenter.loadPokemonList();
     }
 
+    private void injectDependencies() {
+
+        boolean hasNetworkConnection = Connectify.getInstance().hasNetworkConnection();
+
+        PokemonListComponent component = DaggerPokemonListComponent.builder()
+                .pokemonListModule(new PokemonListModule(this, hasNetworkConnection))
+                .build();
+        component.inject(this);
+    }
+
+    private void initUI() {
+        pokemonListRecycler.setHasFixedSize(true);
+        pokemonListRecycler.setLayoutManager(new LinearLayoutManager(this));
+    }
+
     @Override
-    public void showPokemons(List<Pokemon> pokemons) {
+    public void showPokemons(List<Pokemon> pokemons, String fetchedFrom) {
         PokemonAdapter pokemonAdapter = new PokemonAdapter(pokemons);
         pokemonAdapter.setPokemonClickListener(this);
         pokemonListRecycler.setAdapter(pokemonAdapter);
+        Snackbar.make(pokemonListRecycler, fetchedFrom, SNACKBAR_DURATION).show();
+
     }
 
     @Override

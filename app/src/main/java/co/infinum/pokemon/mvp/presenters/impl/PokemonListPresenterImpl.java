@@ -7,6 +7,8 @@ import com.raizlabs.android.dbflow.sql.language.Delete;
 
 import javax.inject.Inject;
 
+import co.infinum.pokemon.PokemonApp;
+import co.infinum.pokemon.R;
 import co.infinum.pokemon.models.Pokedex;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.interactors.PokemonListInteractor;
@@ -57,9 +59,11 @@ public class PokemonListPresenterImpl implements PokemonListPresenter, PokemonLi
 
         }
 
+        String fetchedFrom = PokemonApp.getInstance().getString(R.string.list_fetched_from, source);
 
         pokemonListView.hideProgress();
-        pokemonListView.showPokemons(pokedex.getPokemons());
+        pokemonListView.showPokemons(pokedex.getPokemons(), fetchedFrom);
+
     }
 
     @Override

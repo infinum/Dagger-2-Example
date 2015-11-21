@@ -15,6 +15,13 @@ public class Pokedex implements Serializable {
     @SerializedName(POKEMON)
     private List<Pokemon> pokemons;
 
+    public Pokedex(List<Pokemon> pokemons) {
+        this.pokemons = pokemons;
+    }
+
+    public Pokedex() {
+    }
+
     public List<Pokemon> getPokemons() {
         return pokemons;
     }

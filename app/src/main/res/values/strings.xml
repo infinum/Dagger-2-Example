@@ -13,5 +13,6 @@
     <string name="height">Height</string>
     <string name="attack">Attack</string>
     <string name="defense">Defense</string>
+    <string name="list_fetched_from">"Pokemon list fetched from %1$s"</string>
 
 </resources>
