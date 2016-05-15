@@ -7,8 +7,8 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import co.infinum.pokemon.PokemonApp;
 import co.infinum.pokemon.R;
+import co.infinum.pokemon.dagger.components.AppComponent;
 import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.presenters.PokemonDetailsPresenter;
@@ -46,11 +46,14 @@ public class PokemonDetailsActivity extends BaseActivity implements PokemonDetai
         ButterKnife.inject(this);
 
         Pokemon pokemon = (Pokemon) getIntent().getSerializableExtra(EXTRA_POKEMON);
-
-        PokemonApp.getInstance().getApplicationComponent().plus(new PokemonDetailsModule(this)).inject(this);
-
         pokemonDetailsPresenter.loadDetails(pokemon);
     }
+
+    @Override
+    protected void injectDependencies(AppComponent appComponent) {
+        appComponent.plus(new PokemonDetailsModule(this)).inject(this);
+    }
+
 
     @Override
     protected void onDestroy() {
