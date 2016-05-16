@@ -4,15 +4,16 @@ import javax.inject.Inject;
 
 import co.infinum.pokemon.models.Pokedex;
 import co.infinum.pokemon.models.Pokemon;
+import co.infinum.pokemon.mvp.interfaces.MvpListener;
 import co.infinum.pokemon.mvp.interfaces.MvpPokemonList;
-import co.infinum.pokemon.mvp.listeners.PokemonListListener;
 
-import static co.infinum.pokemon.mvp.interfaces.MvpPokemonList.*;
+import static co.infinum.pokemon.mvp.interfaces.MvpPokemonList.Interactor;
+import static co.infinum.pokemon.mvp.interfaces.MvpPokemonList.View;
 
 /**
  * Created by dino on 21/03/15.
  */
-public class PokemonListPresenter implements MvpPokemonList.Presenter, PokemonListListener {
+public class PokemonListPresenter implements MvpPokemonList.Presenter, MvpListener<Pokedex> {
 
     private final View pokemonListView;
 

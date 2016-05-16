@@ -1,7 +1,6 @@
 package co.infinum.pokemon.mvp.interfaces;
 
 import co.infinum.pokemon.models.Pokemon;
-import co.infinum.pokemon.mvp.listeners.PokemonDetailsListener;
 
 /**
  * Created by Ivan on 16/05/16.
@@ -10,7 +9,7 @@ public interface MvpPokemonDetails {
 
     interface Interactor extends MvpBase.Interactor {
 
-        void loadPokemonDetails(String resourceUri, PokemonDetailsListener pokemonDetailsListener);
+        void loadPokemonDetails(String resourceUri, MvpListener<Pokemon> pokemonDetailsListener);
     }
 
     interface Presenter extends MvpBase.Presenter {

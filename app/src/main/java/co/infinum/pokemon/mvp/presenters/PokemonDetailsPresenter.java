@@ -3,15 +3,16 @@ package co.infinum.pokemon.mvp.presenters;
 import javax.inject.Inject;
 
 import co.infinum.pokemon.models.Pokemon;
+import co.infinum.pokemon.mvp.interfaces.MvpListener;
 import co.infinum.pokemon.mvp.interfaces.MvpPokemonDetails;
-import co.infinum.pokemon.mvp.listeners.PokemonDetailsListener;
 
-import static co.infinum.pokemon.mvp.interfaces.MvpPokemonDetails.*;
+import static co.infinum.pokemon.mvp.interfaces.MvpPokemonDetails.Interactor;
+import static co.infinum.pokemon.mvp.interfaces.MvpPokemonDetails.View;
 
 /**
  * Created by dino on 21/03/15.
  */
-public class PokemonDetailsPresenter implements MvpPokemonDetails.Presenter, PokemonDetailsListener {
+public class PokemonDetailsPresenter implements MvpPokemonDetails.Presenter, MvpListener<Pokemon> {
 
     private final View pokemonDetailsView;
 

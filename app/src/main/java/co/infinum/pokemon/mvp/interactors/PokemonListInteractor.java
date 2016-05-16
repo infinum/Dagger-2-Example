@@ -3,8 +3,8 @@ package co.infinum.pokemon.mvp.interactors;
 import javax.inject.Inject;
 
 import co.infinum.pokemon.models.Pokedex;
+import co.infinum.pokemon.mvp.interfaces.MvpListener;
 import co.infinum.pokemon.mvp.interfaces.MvpPokemonList;
-import co.infinum.pokemon.mvp.listeners.PokemonListListener;
 import co.infinum.pokemon.network.PokemonService;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -15,7 +15,7 @@ import retrofit.client.Response;
  */
 public class PokemonListInteractor implements MvpPokemonList.Interactor, Callback<Pokedex> {
 
-    private PokemonListListener pokemonListListener;
+    private MvpListener<Pokedex> pokemonListListener;
 
     private boolean isCanceled;
 
@@ -27,7 +27,7 @@ public class PokemonListInteractor implements MvpPokemonList.Interactor, Callbac
     }
 
     @Override
-    public void loadPokemonList(PokemonListListener pokemonListListener) {
+    public void loadPokemonList(MvpListener<Pokedex> pokemonListListener) {
         reset();
         this.pokemonListListener = pokemonListListener;
         pokemonService.getPokedex(this);

@@ -3,8 +3,8 @@ package co.infinum.pokemon.mvp.interactors;
 import javax.inject.Inject;
 
 import co.infinum.pokemon.models.Pokemon;
+import co.infinum.pokemon.mvp.interfaces.MvpListener;
 import co.infinum.pokemon.mvp.interfaces.MvpPokemonDetails;
-import co.infinum.pokemon.mvp.listeners.PokemonDetailsListener;
 import co.infinum.pokemon.network.PokemonService;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -15,7 +15,7 @@ import retrofit.client.Response;
  */
 public class PokemonDetailsInteractor implements MvpPokemonDetails.Interactor, Callback<Pokemon> {
 
-    private PokemonDetailsListener pokemonDetailsListener;
+    private MvpListener<Pokemon> pokemonDetailsListener;
 
     private boolean isCanceled;
 
@@ -27,7 +27,7 @@ public class PokemonDetailsInteractor implements MvpPokemonDetails.Interactor, C
     }
 
     @Override
-    public void loadPokemonDetails(String resourceUri, PokemonDetailsListener pokemonDetailsListener) {
+    public void loadPokemonDetails(String resourceUri, MvpListener<Pokemon> pokemonDetailsListener) {
         reset();
         this.pokemonDetailsListener = pokemonDetailsListener;
         pokemonService.getPokemon(resourceUri, this);
