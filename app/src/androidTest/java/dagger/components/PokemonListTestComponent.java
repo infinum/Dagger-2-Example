@@ -1,9 +1,9 @@
 package dagger.components;
 
-import dagger.modules.MockNetworkModule;
 import co.infinum.pokemon.dagger.modules.PokemonListModule;
-import co.infinum.pokemon.mvp.presenters.PokemonListPresenter;
+import co.infinum.pokemon.mvp.interfaces.MvpPokemonList;
 import dagger.Component;
+import dagger.modules.MockNetworkModule;
 
 /**
  * Created by dino on 12/05/15.
@@ -14,5 +14,5 @@ import dagger.Component;
 })
 public interface PokemonListTestComponent {
 
-    PokemonListPresenter presenter();
+    MvpPokemonList.Presenter presenter();
 }

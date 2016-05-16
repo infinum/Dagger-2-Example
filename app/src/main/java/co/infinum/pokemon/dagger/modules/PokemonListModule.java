@@ -2,12 +2,11 @@ package co.infinum.pokemon.dagger.modules;
 
 import co.infinum.pokemon.dagger.scopes.ActivityScope;
 import co.infinum.pokemon.mvp.interactors.PokemonListInteractor;
-import co.infinum.pokemon.mvp.interactors.impl.PokemonListInteractorImpl;
 import co.infinum.pokemon.mvp.presenters.PokemonListPresenter;
-import co.infinum.pokemon.mvp.presenters.impl.PokemonListPresenterImpl;
-import co.infinum.pokemon.mvp.views.PokemonListView;
 import dagger.Module;
 import dagger.Provides;
+
+import static co.infinum.pokemon.mvp.interfaces.MvpPokemonList.*;
 
 /**
  * Created by dino on 12/05/15.
@@ -15,27 +14,27 @@ import dagger.Provides;
 @Module
 public class PokemonListModule {
 
-    private PokemonListView view;
+    private View view;
 
-    public PokemonListModule(PokemonListView view) {
+    public PokemonListModule(View view) {
         this.view = view;
     }
 
     @ActivityScope
     @Provides
-    public PokemonListView provideView() {
+    public View provideView() {
         return view;
     }
 
     @ActivityScope
     @Provides
-    public PokemonListInteractor provideInteractor(PokemonListInteractorImpl interactor) {
+    public Interactor provideInteractor(PokemonListInteractor interactor) {
         return interactor;
     }
 
     @ActivityScope
     @Provides
-    public PokemonListPresenter providePresenter(PokemonListPresenterImpl presenter) {
+    public Presenter providePresenter(PokemonListPresenter presenter) {
         return presenter;
     }
 }

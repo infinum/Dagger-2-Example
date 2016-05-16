@@ -2,7 +2,7 @@ package co.infinum.pokemon.test.helpers;
 
 import org.mockito.InOrder;
 
-import co.infinum.pokemon.mvp.views.BaseView;
+import co.infinum.pokemon.mvp.interfaces.MvpBase;
 
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.timeout;
@@ -15,7 +15,7 @@ public class TestHelper {
 
     public static final int CALLBACK_TIMEOUT_MS = 1000;
 
-    public static void verifyShowHideProgress(BaseView baseView) {
+    public static void verifyShowHideProgress(MvpBase.View baseView) {
         verify(baseView, timeout(CALLBACK_TIMEOUT_MS)).hideProgress();
         InOrder inOrder = inOrder(baseView);
         inOrder.verify(baseView).showProgress();

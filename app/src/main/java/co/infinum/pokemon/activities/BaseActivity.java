@@ -11,12 +11,12 @@ import android.text.Html;
 import co.infinum.pokemon.PokemonApp;
 import co.infinum.pokemon.R;
 import co.infinum.pokemon.dagger.components.AppComponent;
-import co.infinum.pokemon.mvp.views.BaseView;
+import co.infinum.pokemon.mvp.interfaces.MvpBase;
 
 /**
  * Created by dino on 21/03/15.
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseView {
+public abstract class BaseActivity extends AppCompatActivity implements MvpBase.View {
 
     protected Dialog progressDialog;
 

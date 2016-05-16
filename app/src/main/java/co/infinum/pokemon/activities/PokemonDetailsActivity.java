@@ -11,10 +11,9 @@ import co.infinum.pokemon.R;
 import co.infinum.pokemon.dagger.components.AppComponent;
 import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 import co.infinum.pokemon.models.Pokemon;
-import co.infinum.pokemon.mvp.presenters.PokemonDetailsPresenter;
-import co.infinum.pokemon.mvp.views.PokemonDetailsView;
+import co.infinum.pokemon.mvp.interfaces.MvpPokemonDetails;
 
-public class PokemonDetailsActivity extends BaseActivity implements PokemonDetailsView {
+public class PokemonDetailsActivity extends BaseActivity implements MvpPokemonDetails.View {
 
     public static final String EXTRA_POKEMON = "pokemon";
 
@@ -37,7 +36,7 @@ public class PokemonDetailsActivity extends BaseActivity implements PokemonDetai
     protected TextView defenseText;
 
     @Inject
-    protected PokemonDetailsPresenter pokemonDetailsPresenter;
+    protected MvpPokemonDetails.Presenter pokemonDetailsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
