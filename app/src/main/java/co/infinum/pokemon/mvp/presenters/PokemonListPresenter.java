@@ -8,7 +8,7 @@ import co.infinum.pokemon.mvp.interfaces.MvpListener;
 import co.infinum.pokemon.mvp.interfaces.MvpPokemonList;
 
 import static co.infinum.pokemon.mvp.interfaces.MvpPokemonList.Interactor;
-import static co.infinum.pokemon.mvp.interfaces.MvpPokemonList.View;
+import static co.infinum.pokemon.mvp.interfaces.MvpPokedex.View;
 
 /**
  * Created by dino on 21/03/15.

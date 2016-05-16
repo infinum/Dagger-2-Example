@@ -7,6 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 
 import static co.infinum.pokemon.mvp.interfaces.MvpPokemonList.*;
+import static co.infinum.pokemon.mvp.interfaces.MvpPokedex.View;
 
 /**
  * Created by dino on 12/05/15.

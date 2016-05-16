@@ -32,6 +32,7 @@ public class MainActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.pokedex:
+                startActivity(new Intent(this, PokedexActivity.class));
                 break;
             case R.id.hacked_pokedex:
                 startActivity(new Intent(this, PokemonListActivity.class));

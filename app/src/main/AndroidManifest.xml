@@ -19,7 +19,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.PokemonListActivity"/>
+        <activity android:name=".activities.PokedexActivity"
+                  android:parentActivityName=".activities.MainActivity"/>
+
+        <activity android:name=".activities.PokemonListActivity"
+                  android:parentActivityName=".activities.MainActivity"/>
 
         <activity android:name=".activities.PokemonDetailsActivity"
                   android:parentActivityName=".activities.PokemonListActivity"/>

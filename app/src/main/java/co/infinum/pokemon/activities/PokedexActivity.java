@@ -14,18 +14,20 @@ import butterknife.InjectView;
 import co.infinum.pokemon.R;
 import co.infinum.pokemon.adapters.PokemonAdapter;
 import co.infinum.pokemon.dagger.components.AppComponent;
-import co.infinum.pokemon.dagger.modules.PokemonListModule;
+import co.infinum.pokemon.dagger.modules.PokedexModule;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.interfaces.MvpPokedex;
-import co.infinum.pokemon.mvp.interfaces.MvpPokemonList;
 
-public class PokemonListActivity extends BaseActivity implements MvpPokedex.View, PokemonAdapter.PokemonClickListener {
+/**
+ * Created by Ivan on 16/05/16.
+ */
+public class PokedexActivity extends BaseActivity implements MvpPokedex.View, PokemonAdapter.PokemonClickListener {
 
     @InjectView(R.id.recycler_pokemon_list)
     protected RecyclerView pokemonListRecycler;
 
     @Inject
-    protected MvpPokemonList.Presenter pokemonListPresenter;
+    protected MvpPokedex.Presenter pokedexPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +38,12 @@ public class PokemonListActivity extends BaseActivity implements MvpPokedex.View
         pokemonListRecycler.setHasFixedSize(true);
         pokemonListRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        pokemonListPresenter.loadPokemonList();
+        pokedexPresenter.loadPokedex();
     }
 
     @Override
     protected void injectDependencies(AppComponent appComponent) {
-        appComponent.plus(new PokemonListModule(this)).inject(this);
+        appComponent.plus(new PokedexModule(this)).inject(this);
     }
 
     @Override
@@ -53,7 +55,7 @@ public class PokemonListActivity extends BaseActivity implements MvpPokedex.View
 
     @Override
     public void onPokemonClicked(Pokemon pokemon) {
-        pokemonListPresenter.onPokemonSelected(pokemon);
+        pokedexPresenter.onPokemonSelected(pokemon);
     }
 
     @Override
@@ -61,11 +63,5 @@ public class PokemonListActivity extends BaseActivity implements MvpPokedex.View
         Intent intent = new Intent(this, PokemonDetailsActivity.class);
         intent.putExtra(PokemonDetailsActivity.EXTRA_POKEMON, pokemon);
         startActivity(intent);
-    }
-
-    @Override
-    protected void onDestroy() {
-        pokemonListPresenter.cancel();
-        super.onDestroy();
     }
 }

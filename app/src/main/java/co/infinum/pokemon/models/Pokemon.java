@@ -46,6 +46,13 @@ public class Pokemon implements Serializable {
     @SerializedName(WEIGHT)
     private String weight;
 
+    public Pokemon() {
+    }
+
+    public Pokemon(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         try {
             String[] tokens = TextUtils.split(resourceUri, "/");
@@ -137,5 +144,14 @@ public class Pokemon implements Serializable {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Pokemon) {
+            return TextUtils.equals(name, ((Pokemon) o).name);
+        }
+
+        return false;
     }
 }

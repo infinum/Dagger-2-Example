@@ -6,6 +6,7 @@ import co.infinum.pokemon.PokemonApp;
 import co.infinum.pokemon.dagger.modules.DefaultExecutorsModule;
 import co.infinum.pokemon.dagger.modules.HostModule;
 import co.infinum.pokemon.dagger.modules.NetworkModule;
+import co.infinum.pokemon.dagger.modules.PokedexModule;
 import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
 import co.infinum.pokemon.dagger.modules.PokemonListModule;
 import dagger.Component;
@@ -26,5 +27,7 @@ public interface AppComponent {
     PokemonListComponent plus(PokemonListModule pokemonListModule);
 
     PokemonDetailsComponent plus(PokemonDetailsModule pokemonDetailsModule);
+
+    PokedexComponent plus(PokedexModule pokedexModule);
 
 }
