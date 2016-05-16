@@ -13,8 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.infinum.pokemon.R;
 import co.infinum.pokemon.adapters.PokemonAdapter;
-import co.infinum.pokemon.dagger.components.DaggerPokemonListComponent;
-import co.infinum.pokemon.dagger.components.PokemonListComponent;
+import co.infinum.pokemon.dagger.components.AppComponent;
 import co.infinum.pokemon.dagger.modules.PokemonListModule;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.presenters.PokemonListPresenter;
@@ -37,12 +36,12 @@ public class PokemonListActivity extends BaseActivity implements PokemonListView
         pokemonListRecycler.setHasFixedSize(true);
         pokemonListRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        PokemonListComponent component = DaggerPokemonListComponent.builder()
-                .pokemonListModule(new PokemonListModule(this))
-                .build();
-        component.inject(this);
-
         pokemonListPresenter.loadPokemonList();
+    }
+
+    @Override
+    protected void injectDependencies(AppComponent appComponent) {
+        appComponent.plus(new PokemonListModule(this)).inject(this);
     }
 
     @Override

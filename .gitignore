@@ -111,3 +111,5 @@ crashlytics-build.properties
 
 # Crashlytics
 *com_crashlytics_export_strings.xml
+
+captures/
