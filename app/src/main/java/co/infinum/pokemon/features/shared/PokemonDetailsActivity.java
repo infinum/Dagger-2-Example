@@ -1,4 +1,4 @@
-package co.infinum.pokemon.activities;
+package co.infinum.pokemon.features.shared;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -10,6 +10,7 @@ import butterknife.InjectView;
 import co.infinum.pokemon.R;
 import co.infinum.pokemon.dagger.components.AppComponent;
 import co.infinum.pokemon.dagger.modules.PokemonDetailsModule;
+import co.infinum.pokemon.features.shared.BaseActivity;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.interfaces.MvpPokemonDetails;
 

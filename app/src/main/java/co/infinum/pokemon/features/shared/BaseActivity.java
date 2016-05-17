@@ -1,4 +1,4 @@
-package co.infinum.pokemon.activities;
+package co.infinum.pokemon.features.shared;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

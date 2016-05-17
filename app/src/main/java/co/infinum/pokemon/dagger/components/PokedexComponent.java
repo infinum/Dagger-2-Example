@@ -1,6 +1,6 @@
 package co.infinum.pokemon.dagger.components;
 
-import co.infinum.pokemon.activities.PokedexActivity;
+import co.infinum.pokemon.features.pokedex.PokedexActivity;
 import co.infinum.pokemon.dagger.modules.PokedexModule;
 import co.infinum.pokemon.dagger.scopes.ActivityScope;
 import dagger.Subcomponent;

@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import co.infinum.pokemon.PokemonTestApp;
 import co.infinum.pokemon.R;
-import co.infinum.pokemon.activities.PokemonDetailsActivity;
+import co.infinum.pokemon.features.shared.PokemonDetailsActivity;
 import co.infinum.pokemon.helpers.CustomRobolectricGradleTestRunner;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.shadows.ShadowGson;

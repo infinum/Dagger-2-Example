@@ -1,4 +1,4 @@
-package co.infinum.pokemon.adapters;
+package co.infinum.pokemon.features.shared.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

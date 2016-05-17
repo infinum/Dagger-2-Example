@@ -1,4 +1,4 @@
-package co.infinum.pokemon.activities;
+package co.infinum.pokemon.features.pokedex;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -17,9 +17,11 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import co.infinum.pokemon.R;
-import co.infinum.pokemon.adapters.PokemonAdapter;
+import co.infinum.pokemon.features.shared.adapters.PokemonAdapter;
 import co.infinum.pokemon.dagger.components.AppComponent;
 import co.infinum.pokemon.dagger.modules.PokedexModule;
+import co.infinum.pokemon.features.shared.PokemonDetailsActivity;
+import co.infinum.pokemon.features.shared.BaseActivity;
 import co.infinum.pokemon.models.Pokemon;
 import co.infinum.pokemon.mvp.interfaces.MvpPokedex;
 

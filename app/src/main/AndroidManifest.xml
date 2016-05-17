@@ -11,7 +11,7 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
 
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".features.dashboard.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,14 +19,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.PokedexActivity"
-                  android:parentActivityName=".activities.MainActivity"/>
+        <activity android:name=".features.pokedex.PokedexActivity"
+                  android:parentActivityName=".features.dashboard.MainActivity"/>
 
-        <activity android:name=".activities.PokemonListActivity"
-                  android:parentActivityName=".activities.MainActivity"/>
+        <activity android:name=".features.overview.PokemonListActivity"
+                  android:parentActivityName=".features.dashboard.MainActivity"/>
 
-        <activity android:name=".activities.PokemonDetailsActivity"
-                  android:parentActivityName=".activities.PokemonListActivity"/>
+        <activity android:name=".features.shared.PokemonDetailsActivity"
+                  android:parentActivityName=".features.overview.PokemonListActivity"/>
     </application>
 
 </manifest>

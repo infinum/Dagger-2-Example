@@ -1,4 +1,4 @@
-package co.infinum.pokemon.activities;
+package co.infinum.pokemon.features.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import co.infinum.pokemon.R;
 import co.infinum.pokemon.dagger.components.AppComponent;
+import co.infinum.pokemon.features.pokedex.PokedexActivity;
+import co.infinum.pokemon.features.overview.PokemonListActivity;
+import co.infinum.pokemon.features.shared.BaseActivity;
 
 /**
  * Created by Ivan on 16/05/16.
