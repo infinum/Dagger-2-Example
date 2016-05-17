@@ -1,5 +1,7 @@
 package co.infinum.pokemon.mvp.interfaces;
 
+import java.util.List;
+
 import co.infinum.pokemon.models.Pokedex;
 import co.infinum.pokemon.models.Pokemon;
 
@@ -18,5 +20,12 @@ public interface MvpPokemonList {
         void loadPokemonList();
 
         void onPokemonSelected(Pokemon pokemon);
+    }
+
+    interface View extends MvpBase.View {
+
+        void showPokemons(List<Pokemon> pokemons);
+
+        void showPokemonDetails(Pokemon pokemon);
     }
 }

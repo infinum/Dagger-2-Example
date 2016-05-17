@@ -15,6 +15,8 @@ import retrofit.client.Response;
  */
 public class PokemonDetailsInteractor implements MvpPokemonDetails.Interactor, Callback<Pokemon> {
 
+    private static final String POKEMON_RESOURCE = "api/v1/pokemon/%d/";
+
     private MvpListener<Pokemon> pokemonDetailsListener;
 
     private boolean isCanceled;
@@ -31,6 +33,11 @@ public class PokemonDetailsInteractor implements MvpPokemonDetails.Interactor, C
         reset();
         this.pokemonDetailsListener = pokemonDetailsListener;
         pokemonService.getPokemon(resourceUri, this);
+    }
+
+    @Override
+    public void loadPokemonDetails(int pokemonId, MvpListener<Pokemon> pokemonDetailsListener) {
+        loadPokemonDetails(String.format(POKEMON_RESOURCE, pokemonId), pokemonDetailsListener);
     }
 
     @Override

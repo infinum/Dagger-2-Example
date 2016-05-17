@@ -13,6 +13,8 @@ public interface MvpPokedex {
     interface Interactor extends MvpBase.Interactor {
 
         void loadKnownPokemonList(MvpListener<Pokedex> pokemonListListener);
+
+        boolean addPokemon(Pokemon pokemon);
     }
 
     interface Presenter extends MvpBase.Presenter {
@@ -20,6 +22,8 @@ public interface MvpPokedex {
         void loadPokedex();
 
         void onPokemonSelected(Pokemon pokemon);
+
+        void addPokemon(String contents);
     }
 
     interface View extends MvpBase.View {
@@ -27,5 +31,7 @@ public interface MvpPokedex {
         void showPokemons(List<Pokemon> pokemons);
 
         void showPokemonDetails(Pokemon pokemon);
+
+        void newPokemon(Pokemon pokemon);
     }
 }

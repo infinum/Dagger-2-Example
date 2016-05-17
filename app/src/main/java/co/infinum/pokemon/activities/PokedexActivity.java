@@ -1,9 +1,14 @@
 package co.infinum.pokemon.activities;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.List;
 
@@ -29,6 +34,8 @@ public class PokedexActivity extends BaseActivity implements MvpPokedex.View, Po
     @Inject
     protected MvpPokedex.Presenter pokedexPresenter;
 
+    private PokemonAdapter pokemonAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,7 @@ public class PokedexActivity extends BaseActivity implements MvpPokedex.View, Po
         pokemonListRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         pokedexPresenter.loadPokedex();
+
     }
 
     @Override
@@ -48,7 +56,7 @@ public class PokedexActivity extends BaseActivity implements MvpPokedex.View, Po
 
     @Override
     public void showPokemons(List<Pokemon> pokemons) {
-        PokemonAdapter pokemonAdapter = new PokemonAdapter(pokemons);
+        pokemonAdapter = new PokemonAdapter(pokemons);
         pokemonAdapter.setPokemonClickListener(this);
         pokemonListRecycler.setAdapter(pokemonAdapter);
     }
@@ -63,5 +71,39 @@ public class PokedexActivity extends BaseActivity implements MvpPokedex.View, Po
         Intent intent = new Intent(this, PokemonDetailsActivity.class);
         intent.putExtra(PokemonDetailsActivity.EXTRA_POKEMON, pokemon);
         startActivity(intent);
+    }
+
+    @Override
+    public void newPokemon(Pokemon pokemon) {
+        pokemonAdapter.addPokemon(pokemon);
+        pokemonListRecycler.scrollToPosition(pokemon.getId() - 1);
+        showPokemonDetails(pokemon);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.pokedex, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_add) {
+            IntentIntegrator integrator = new IntentIntegrator(this);
+            integrator.initiateScan();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (scanResult != null) {
+            // handle scan result
+            pokedexPresenter.addPokemon(scanResult.getContents());
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

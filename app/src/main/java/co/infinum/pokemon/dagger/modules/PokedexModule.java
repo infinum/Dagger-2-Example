@@ -2,7 +2,9 @@ package co.infinum.pokemon.dagger.modules;
 
 import co.infinum.pokemon.dagger.scopes.ActivityScope;
 import co.infinum.pokemon.mvp.interactors.PokedexInteractor;
+import co.infinum.pokemon.mvp.interactors.PokemonDetailsInteractor;
 import co.infinum.pokemon.mvp.interactors.PokemonListInteractor;
+import co.infinum.pokemon.mvp.interfaces.MvpPokemonDetails;
 import co.infinum.pokemon.mvp.interfaces.MvpPokemonList;
 import co.infinum.pokemon.mvp.presenters.PokedexPresenter;
 import dagger.Module;
@@ -15,6 +17,7 @@ import static co.infinum.pokemon.mvp.interfaces.MvpPokedex.View;
 /**
  * Created by Ivan on 16/05/16.
  */
+@ActivityScope
 @Module
 public class PokedexModule {
 
@@ -24,27 +27,28 @@ public class PokedexModule {
         this.view = view;
     }
 
-    @ActivityScope
     @Provides
     public View provideView() {
         return view;
     }
 
-    @ActivityScope
     @Provides
     public Interactor provideInteractor(PokedexInteractor interactor) {
         return interactor;
     }
 
-    @ActivityScope
     @Provides
     public Presenter providePresenter(PokedexPresenter presenter) {
         return presenter;
     }
 
-    @ActivityScope
     @Provides
     public MvpPokemonList.Interactor provideListInteractor(PokemonListInteractor interactor) {
+        return interactor;
+    }
+
+    @Provides
+    public MvpPokemonDetails.Interactor provideDetailsInteractor(PokemonDetailsInteractor interactor) {
         return interactor;
     }
 

@@ -14,7 +14,7 @@ import retrofit.Endpoints;
 @Module
 public class HostModule {
 
-    public static final int NETWORK_TIMEOUT_SECONDS = 10;
+    public static final int NETWORK_TIMEOUT_SECONDS = 30;
 
     @Provides
     @Singleton

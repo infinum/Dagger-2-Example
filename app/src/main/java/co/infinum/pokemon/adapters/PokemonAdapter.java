@@ -64,6 +64,12 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
         this.pokemonClickListener = pokemonClickListener;
     }
 
+    public void addPokemon(Pokemon pokemon) {
+        pokemonList.remove(pokemon.getId() - 1);
+        pokemonList.add(pokemon.getId() - 1, pokemon);
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         View rootView;

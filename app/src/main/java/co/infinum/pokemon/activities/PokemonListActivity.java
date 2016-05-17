@@ -16,10 +16,9 @@ import co.infinum.pokemon.adapters.PokemonAdapter;
 import co.infinum.pokemon.dagger.components.AppComponent;
 import co.infinum.pokemon.dagger.modules.PokemonListModule;
 import co.infinum.pokemon.models.Pokemon;
-import co.infinum.pokemon.mvp.interfaces.MvpPokedex;
 import co.infinum.pokemon.mvp.interfaces.MvpPokemonList;
 
-public class PokemonListActivity extends BaseActivity implements MvpPokedex.View, PokemonAdapter.PokemonClickListener {
+public class PokemonListActivity extends BaseActivity implements MvpPokemonList.View, PokemonAdapter.PokemonClickListener {
 
     @InjectView(R.id.recycler_pokemon_list)
     protected RecyclerView pokemonListRecycler;
