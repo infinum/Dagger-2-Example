@@ -2,7 +2,7 @@ package dagger.components;
 
 import dagger.modules.MockNetworkModule;
 import co.infinum.pokemon.dagger.modules.PokemonListModule;
-import co.infinum.pokemon.mvp.presenters.PokemonListPresenter;
+import co.infinum.pokemon.ui.pokemon.list.PokemonListPresenter;
 import dagger.Component;
 
 /**

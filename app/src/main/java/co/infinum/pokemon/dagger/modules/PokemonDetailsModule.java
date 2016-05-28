@@ -1,11 +1,11 @@
 package co.infinum.pokemon.dagger.modules;
 
 import co.infinum.pokemon.dagger.scopes.ActivityScope;
-import co.infinum.pokemon.mvp.interactors.PokemonDetailsInteractor;
-import co.infinum.pokemon.mvp.interactors.impl.PokemonDetailsInteractorImpl;
-import co.infinum.pokemon.mvp.presenters.PokemonDetailsPresenter;
-import co.infinum.pokemon.mvp.presenters.impl.PokemonDetailsPresenterImpl;
-import co.infinum.pokemon.mvp.views.PokemonDetailsView;
+import co.infinum.pokemon.data.interactors.pokemon.details.PokemonDetailsInteractor;
+import co.infinum.pokemon.data.interactors.pokemon.details.PokemonDetailsInteractorImpl;
+import co.infinum.pokemon.ui.pokemon.details.PokemonDetailsPresenter;
+import co.infinum.pokemon.ui.pokemon.details.PokemonDetailsPresenterImpl;
+import co.infinum.pokemon.ui.pokemon.details.PokemonDetailsView;
 import dagger.Module;
 import dagger.Provides;
 
@@ -29,13 +29,13 @@ public class PokemonDetailsModule {
 
     @ActivityScope
     @Provides
-    public PokemonDetailsInteractor provideInteractor(PokemonDetailsInteractorImpl interactor) {
-        return interactor;
-    }
-
-    @ActivityScope
-    @Provides
     public PokemonDetailsPresenter providePresenter(PokemonDetailsPresenterImpl presenter) {
         return presenter;
+    }
+
+    @Provides
+    @ActivityScope
+    public PokemonDetailsInteractor provideInteractor(PokemonDetailsInteractorImpl interactor) {
+        return interactor;
     }
 }

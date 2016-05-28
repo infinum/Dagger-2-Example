@@ -11,15 +11,15 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".activities.PokemonListActivity">
+                android:name=".ui.pokemon.list.PokemonListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PokemonDetailsActivity"
-                  android:parentActivityName=".activities.PokemonListActivity"/>
+        <activity android:name=".ui.pokemon.details.PokemonDetailsActivity"
+                  android:parentActivityName=".ui.pokemon.list.PokemonListActivity"/>
     </application>
 
 </manifest>

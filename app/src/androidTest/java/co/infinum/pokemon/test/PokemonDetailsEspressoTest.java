@@ -9,7 +9,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.test.suitebuilder.annotation.LargeTest;
 
 import co.infinum.pokemon.PokemonApp;
-import co.infinum.pokemon.activities.PokemonDetailsActivity;
+import co.infinum.pokemon.ui.pokemon.details.PokemonDetailsActivity;
 import co.infinum.pokemon.dagger.components.DaggerAppComponent;
 
 /**

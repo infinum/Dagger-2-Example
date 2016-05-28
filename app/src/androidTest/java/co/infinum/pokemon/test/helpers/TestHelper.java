@@ -2,7 +2,7 @@ package co.infinum.pokemon.test.helpers;
 
 import org.mockito.InOrder;
 
-import co.infinum.pokemon.mvp.views.BaseView;
+import co.infinum.pokemon.ui.BaseView;
 
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.timeout;

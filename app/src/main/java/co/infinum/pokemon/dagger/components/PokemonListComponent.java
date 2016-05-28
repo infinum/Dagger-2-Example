@@ -1,6 +1,6 @@
 package co.infinum.pokemon.dagger.components;
 
-import co.infinum.pokemon.activities.PokemonListActivity;
+import co.infinum.pokemon.ui.pokemon.list.PokemonListActivity;
 import co.infinum.pokemon.dagger.modules.PokemonListModule;
 import co.infinum.pokemon.dagger.scopes.ActivityScope;
 import dagger.Subcomponent;

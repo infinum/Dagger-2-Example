@@ -1,5 +1,6 @@
 package dagger.modules;
 
+import co.infinum.pokemon.dagger.modules.NetworkModule;
 import dagger.Module;
 
 /**
@@ -7,7 +8,7 @@ import dagger.Module;
  */
 @Module(includes = {
         MockHostModule.class,
-        ApiModule.class
+        NetworkModule.class
 })
 public class MockNetworkModule {
 

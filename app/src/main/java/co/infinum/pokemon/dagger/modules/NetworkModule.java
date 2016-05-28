@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import co.infinum.pokemon.network.PokemonService;
+import co.infinum.pokemon.data.remote.PokemonService;
 import dagger.Module;
 import dagger.Provides;
 import retrofit.Endpoint;
@@ -34,6 +34,7 @@ public class NetworkModule {
         };
     }
 
+    // todo move to separate module
     @Provides
     @Singleton
     public OkHttpClient provideClient(Integer networkTimeout) {
